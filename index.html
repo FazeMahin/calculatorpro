@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Calculator Pro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --light: #f3f4f6;
+            --white: #ffffff;
+
+            /* Add theme variables */
+            --bg-primary: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1f2937;
+            --border-color: #e5e7eb;
+        }
+
+        /* Add dark mode variables */
+        [data-theme='dark'] {
+            --bg-primary: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f1f5f9;
+            --border-color: #334155;
+            --light: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .input-section h2,
+        .results-section h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .investment-type {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .investment-type h3 {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .date-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .add-btn {
+            background: var(--light);
+            color: var(--primary);
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .calculate-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 1rem;
+            transition: background-color 0.2s;
+        }
+
+        .calculate-btn:hover {
+            background: var(--primary-light);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-item {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .summary-item h4 {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-item p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .chart-container {
+            margin-top: 2rem;
+            height: 400px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .app-container {
+                padding: 1rem;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .lumpsum-entry {
+            position: relative;
+            padding: 1rem;
+            border: 1px solid var(--light);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .remove-investment {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .remove-investment:hover {
+            background: #dc2626;
+            transform: scale(1.1);
+        }
+
+        /* Add theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Error message styling */
+        .error-message {
+            background: var(--danger);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .error-message h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .error-message ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .error-message li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Add to existing CSS */
+        .progress-bar {
+            height: 4px;
+            background: var(--light);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .progress-value {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .target-achieved {
+            color: var(--success);
+            font-weight: 500;
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        /* Add to your existing styles */
+        .custom-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        .final-balance {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .final-balance h4 {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .final-balance p {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--success);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Investment Calculator Pro</h1>
+            <p class="subtitle">Calculate combined returns from SIP, Lumpsum & SWP investments</p>
+        </header>
+
+        <main>
+            <div class="calculator-grid">
+                <!-- Investment Inputs Section -->
+                <section class="input-section">
+                    <div class="card">
+                        <h2>Investment Details</h2>
+                        <div class="input-group">
+                            <label for="annualRate">Annual Return Rate (%)</label>
+                            <input type="number" id="annualRate" value="12" min="1" max="100">
+                        </div>
+                        
+                        <!-- SIP Inputs -->
+                        <div class="investment-type">
+                            <h3>SIP Details</h3>
+                            <div class="input-group">
+                                <label for="sipAmount">Monthly Investment (₹)</label>
+                                <input type="number" id="sipAmount" placeholder="e.g., 10000">
+                            </div>
+                            <div class="date-inputs">
+                                <div class="input-group">
+                                    <label for="sipStart">Start Date</label>
+                                    <input type="date" id="sipStart">
+                                </div>
+                                <div class="input-group">
+                                    <label for="sipEnd">End Date</label>
+                                    <input type="date" id="sipEnd">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lumpsum Section -->
+                        <div class="investment-type">
+                            <h3>Lumpsum Investments</h3>
+                            <div id="lumpsumContainer">
+                                <!-- Dynamic lumpsum entries will be added here -->
+                            </div>
+                            <button class="add-btn" onclick="addLumpsumEntry()">+ Add Lumpsum Investment</button>
+                        </div>
+
+                        <!-- SWP Section -->
+                        <div class="investment-type">
+                            <h3>SWP Details</h3>
+                            <div class="input-group">
+                                <label for="swpAmount">Monthly Withdrawal (₹)</label>
+                                <input type="number" id="swpAmount" placeholder="e.g., 5000">
+                            </div>
+                            <div class="date-inputs">
+                                <div class="input-group">
+                                    <label for="swpStart">Start Date</label>
+                                    <input type="date" id="swpStart">
+                                </div>
+                                <div class="input-group">
+                                    <label for="swpEnd">End Date</label>
+                                    <input type="date" id="swpEnd">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Post-Investment Withdrawal Plan -->
+                        <div class="investment-type">
+                            <h3>Post-Investment Withdrawal Plan</h3>
+                            <div class="input-group">
+                                <label>Withdrawal Type</label>
+                                <select id="postWithdrawalType" class="custom-select">
+                                    <option value="monthly">Monthly Withdrawal</option>
+                                    <option value="yearly">Yearly Withdrawal</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="postWithdrawalAmount">Withdrawal Amount (₹)</label>
+                                <input type="number" id="postWithdrawalAmount" placeholder="e.g., 50000">
+                            </div>
+                            <div class="date-inputs">
+                                <div class="input-group">
+                                    <label for="postWithdrawalStart">Start Date</label>
+                                    <input type="date" id="postWithdrawalStart">
+                                </div>
+                                <div class="input-group">
+                                    <label for="postWithdrawalEnd">End Date</label>
+                                    <input type="date" id="postWithdrawalEnd">
+                                </div>
+                            </div>
+                            <div class="final-balance">
+                                <h4>Projected Final Balance</h4>
+                                <p id="finalBalance">₹0</p>
+                            </div>
+                        </div>
+
+                        <button class="calculate-btn" onclick="calculateInvestment()">Calculate Returns</button>
+                    </div>
+                </section>
+
+                <!-- Results Section -->
+                <section class="results-section">
+                    <div class="card">
+                        <h2>Investment Summary</h2>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <h4>Total Invested</h4>
+                                <p id="totalInvested">₹0</p>
+                            </div>
+                            <div class="summary-item">
+                                <h4>Expected Returns</h4>
+                                <p id="totalReturns">₹0</p>
+                            </div>
+                            <div class="summary-item">
+                                <h4>Total Withdrawals</h4>
+                                <p id="totalWithdrawals">₹0</p>
+                            </div>
+                            <div class="summary-item">
+                                <h4>Net Gain/Loss</h4>
+                                <p id="netGainLoss">₹0</p>
+                            </div>
+                        </div>
+
+                        <div class="investment-breakdown">
+                            <h3>Investment Breakdown</h3>
+                            <div class="breakdown-chart">
+                                <canvas id="breakdownChart"></canvas>
+                            </div>
+                            <div class="breakdown-legend">
+                                <div class="legend-item">
+                                    <span class="color-dot sip"></span>
+                                    <span>SIP Investments</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="color-dot lumpsum"></span>
+                                    <span>Lumpsum Investments</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="color-dot returns"></span>
+                                    <span>Returns</span>
+                                </div>
+                            </div>
+
+                        <div class="chart-container">
+                            <canvas id="investmentChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script>
+        class InvestmentCalculator {
+            constructor() {
+                this.investments = [];
+                this.annualRate = 0;
+                this.chart = null;
+            }
+
+            // Set annual interest rate
+            setAnnualRate(rate) {
+                this.annualRate = rate;
+            }
+
+            // Add SIP investment
+            addSIP(monthlyAmount, startDate, endDate) {
+                this.investments.push({
+                    type: 'SIP',
+                    amount: monthlyAmount,
+                    startDate: new Date(startDate),
+                    endDate: new Date(endDate)
+                });
+            }
+
+            // Add Lumpsum investment
+            addLumpsum(amount, date) {
+                this.investments.push({
+                    type: 'LUMPSUM',
+                    amount: amount,
+                    date: new Date(date)
+                });
+            }
+
+            // Add SWP (withdrawal)
+            addSWP(monthlyWithdrawal, startDate, endDate) {
+                this.investments.push({
+                    type: 'SWP',
+                    amount: -monthlyWithdrawal, // Negative amount for withdrawals
+                    startDate: new Date(startDate),
+                    endDate: new Date(endDate)
+                });
+            }
+
+            // Add Post-Investment Withdrawal
+            addPostWithdrawal(amount, type, startDate, endDate) {
+                this.investments.push({
+                    type: 'POST_WITHDRAWAL',
+                    amount: -amount,
+                    withdrawalType: type,
+                    startDate: new Date(startDate),
+                    endDate: new Date(endDate)
+                });
+            }
+
+            // Helper function to calculate months between dates
+            monthsDifference(startDate, endDate) {
+                return (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
+                       endDate.getMonth() - startDate.getMonth();
+            }
+
+            // Calculate returns up to a specific date
+            calculateReturns(targetDate) {
+                let total = 0;
+                const monthlyRate = this.annualRate / 12 / 100;
+
+                this.investments.forEach(investment => {
+                    if (investment.type === 'LUMPSUM') {
+                        if (investment.date <= targetDate) {
+                            const months = this.monthsDifference(investment.date, targetDate);
+                            total += investment.amount * Math.pow(1 + monthlyRate, months);
+                        }
+                    } else {
+                        // For SIP and SWP
+                        let currentDate = new Date(investment.startDate);
+                        while (currentDate <= targetDate && currentDate <= investment.endDate) {
+                            const months = this.monthsDifference(currentDate, targetDate);
+                            total += investment.amount * Math.pow(1 + monthlyRate, months);
+                            currentDate.setMonth(currentDate.getMonth() + 1);
+                        }
+                    }
+                });
+
+                return Math.round(total);
+            }
+
+            // Calculate final balance including post-investment withdrawals
+            calculateFinalBalance(targetDate) {
+                let balance = this.calculateReturns(targetDate);
+                const monthlyRate = this.annualRate / 12 / 100;
+
+                this.investments
+                    .filter(inv => inv.type === 'POST_WITHDRAWAL')
+                    .forEach(withdrawal => {
+                        if (withdrawal.withdrawalType === 'yearly') {
+                            const years = Math.floor(
+                                (withdrawal.endDate - withdrawal.startDate) / (365 * 24 * 60 * 60 * 1000)
+                            );
+                            balance += withdrawal.amount * 12 * years;
+                        } else {
+                            const months = this.monthsDifference(withdrawal.startDate, withdrawal.endDate);
+                            balance += withdrawal.amount * months;
+                        }
+                    });
+
+                return Math.round(balance);
+            }
+
+            // Get detailed investment summary
+            getSummary(finalDate) {
+                const summary = {
+                    totalInvested: 0,
+                    totalReturns: this.calculateReturns(finalDate),
+                    sipTotal: 0,
+                    lumpsumTotal: 0,
+                    swpTotal: 0,
+                    gainLoss: 0
+                };
+
+                this.investments.forEach(investment => {
+                    if (investment.type === 'LUMPSUM') {
+                        summary.lumpsumTotal += investment.amount;
+                    } else {
+                        const months = this.monthsDifference(
+                            investment.startDate, 
+                            new Date(Math.min(finalDate, investment.endDate))
+                        );
+                        const totalAmount = investment.amount * (months + 1);
+                        if (investment.type === 'SIP') {
+                            summary.sipTotal += totalAmount;
+                        } else {
+                            summary.swpTotal += Math.abs(totalAmount);
+                        }
+                    }
+                });
+
+                summary.totalInvested = summary.sipTotal + summary.lumpsumTotal;
+                summary.gainLoss = summary.totalReturns - summary.totalInvested + summary.swpTotal;
+
+                return summary;
+            }
+
+            // Update the generateChartData method in InvestmentCalculator class
+            generateChartData(startDate, endDate) {
+                const dates = [];
+                const balances = [];
+                let currentDate = new Date(startDate);
+
+                // Ensure we create a fresh date object to avoid reference issues
+                endDate = new Date(endDate);
+
+                while (currentDate <= endDate) {
+                    // Create a fresh date object for calculations
+                    const calculationDate = new Date(currentDate);
+                    dates.push(calculationDate.toLocaleDateString('en-GB', { 
+                        month: 'short', 
+                        year: 'numeric' 
+                    }));
+                    
+                    const balance = this.calculateReturns(calculationDate);
+                    balances.push(balance);
+
+                    // Move to next month
+                    currentDate.setMonth(currentDate.getMonth() + 1);
+                }
+
+                return { dates, balances };
+            }
+
+            // Update chart
+            updateChart(startDate, endDate) {
+                const ctx = document.getElementById('investmentChart').getContext('2d');
+                const { dates, balances } = this.generateChartData(startDate, endDate);
+
+                if (this.chart) {
+                    this.chart.destroy();
+                }
+
+                this.chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: 'Investment Value',
+                            data: balances,
+                            borderColor: '#2563eb',
+                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 750
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index'
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return '₹' + context.parsed.y.toLocaleString('en-IN');
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: value => '₹' + value.toLocaleString('en-IN')
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Validate inputs
+            validateInputs() {
+                const errors = [];
+                
+                if (this.annualRate <= 0 || this.annualRate > 100) {
+                    errors.push('Annual rate must be between 0 and 100%');
+                }
+                
+                this.investments.forEach((inv, index) => {
+                    // Skip validation for empty investments
+                    if (!inv.amount && inv.amount !== 0) {
+                        return;
+                    }
+
+                    // For SWP, amount is already negative, so check absolute value
+                    const amountToCheck = inv.type === 'SWP' ? Math.abs(inv.amount) : inv.amount;
+                    
+                    if (amountToCheck <= 0) {
+                        errors.push(`${inv.type === 'SWP' ? 'Withdrawal' : 'Investment'} amount must be positive`);
+                    }
+
+                    // Only check dates for SIP and SWP
+                    if (inv.type !== 'LUMPSUM') {
+                        if (!inv.startDate || !inv.endDate) {
+                            errors.push(`Please set both start and end dates for ${inv.type}`);
+                        } else if (inv.startDate >= inv.endDate) {
+                            errors.push(`End date must be after start date for ${inv.type}`);
+                        }
+                    }
+                });
+                
+                return errors;
+            }
+        }
+
+        // UI Helper Functions
+        function addLumpsumEntry() {
+            const container = document.getElementById('lumpsumContainer');
+            const entryDiv = document.createElement('div');
+            entryDiv.className = 'lumpsum-entry';
+            entryDiv.innerHTML = `
+                <button class="remove-investment" onclick="removeInvestment(this)">&times;</button>
+                <div class="input-group">
+                    <label>Amount (₹)</label>
+                    <input type="number" class="lumpsum-amount" placeholder="e.g., 20000" onchange="calculateInvestment()">
+                </div>
+                <div class="input-group">
+                    <label>Investment Date</label>
+                    <input type="date" class="lumpsum-date" onchange="calculateInvestment()">
+                </div>
+            `;
+            container.appendChild(entryDiv);
+        }
+
+        function removeInvestment(button) {
+            button.parentElement.remove();
+            calculateInvestment();
+        }
+
+        // Update all input elements to recalculate on change
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('change', calculateInvestment);
+            });
+        });
+
+        // Update calculateInvestment function
+        function calculateInvestment() {
+            const calculator = new InvestmentCalculator();
+            const annualRate = parseFloat(document.getElementById('annualRate').value) || 0;
+            calculator.setAnnualRate(annualRate);
+
+            let hasInvestments = false;
+            let earliestDate = null;
+            let latestDate = null;
+
+            // Add SIP if values are present
+            const sipAmount = parseFloat(document.getElementById('sipAmount').value);
+            const sipStart = document.getElementById('sipStart').value;
+            const sipEnd = document.getElementById('sipEnd').value;
+            if (sipAmount > 0 && sipStart && sipEnd) {
+                calculator.addSIP(sipAmount, sipStart, sipEnd);
+                earliestDate = new Date(sipStart);
+                latestDate = new Date(sipEnd);
+                hasInvestments = true;
+            }
+
+            // Add Lumpsums
+            document.querySelectorAll('.lumpsum-entry').forEach(entry => {
+                const amount = parseFloat(entry.querySelector('.lumpsum-amount').value);
+                const date = entry.querySelector('.lumpsum-date').value;
+                if (amount > 0 && date) {
+                    calculator.addLumpsum(amount, date);
+                    const investDate = new Date(date);
+                    earliestDate = earliestDate ? new Date(Math.min(investDate, earliestDate)) : investDate;
+                    latestDate = latestDate ? new Date(Math.max(investDate, latestDate)) : investDate;
+                    hasInvestments = true;
+                }
+            });
+
+            // Add SWP if values are present
+            const swpAmount = parseFloat(document.getElementById('swpAmount').value);
+            const swpStart = document.getElementById('swpStart').value;
+            const swpEnd = document.getElementById('swpEnd').value;
+            if (swpAmount > 0 && swpStart && swpEnd) {
+                calculator.addSWP(swpAmount, swpStart, swpEnd);
+                latestDate = new Date(Math.max(new Date(swpEnd), latestDate));
+            }
+
+            // Add post-investment withdrawal
+            const postWithdrawalAmount = parseFloat(document.getElementById('postWithdrawalAmount').value);
+            const postWithdrawalType = document.getElementById('postWithdrawalType').value;
+            const postWithdrawalStart = document.getElementById('postWithdrawalStart').value;
+            const postWithdrawalEnd = document.getElementById('postWithdrawalEnd').value;
+
+            if (postWithdrawalAmount > 0 && postWithdrawalStart && postWithdrawalEnd) {
+                calculator.addPostWithdrawal(
+                    postWithdrawalAmount,
+                    postWithdrawalType,
+                    postWithdrawalStart,
+                    postWithdrawalEnd
+                );
+                latestDate = new Date(Math.max(new Date(postWithdrawalEnd), latestDate || 0));
+            }
+
+            // Only validate if we have investments
+            if (hasInvestments) {
+                const errors = calculator.validateInputs();
+                if (errors.length > 0) {
+                    showErrors(errors);
+                    return;
+                }
+
+                const summary = calculator.getSummary(latestDate);
+                const finalBalance = calculator.calculateFinalBalance(latestDate);
+
+                // Update summary values
+                document.getElementById('totalInvested').textContent = 
+                    '₹' + summary.totalInvested.toLocaleString('en-IN');
+                document.getElementById('totalReturns').textContent = 
+                    '₹' + summary.totalReturns.toLocaleString('en-IN');
+                document.getElementById('totalWithdrawals').textContent = 
+                    '₹' + summary.swpTotal.toLocaleString('en-IN');
+                document.getElementById('netGainLoss').textContent = 
+                    '₹' + summary.gainLoss.toLocaleString('en-IN');
+
+                // Update final balance
+                document.getElementById('finalBalance').textContent = 
+                    '₹' + finalBalance.toLocaleString('en-IN');
+
+                // Update chart with extended timeline
+                calculator.updateChart(earliestDate, latestDate);
+            } else {
+                showErrors(['Please add at least one investment']);
+            }
+        }
+
+        function showErrors(errors) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.innerHTML = `
+                <h4>Please fix the following errors:</h4>
+                <ul>
+                    ${errors.map(err => `<li>${err}</li>`).join('')}
+                </ul>
+            `;
+            
+            document.querySelector('.input-section .card').prepend(errorDiv);
+            setTimeout(() => errorDiv.remove(), 5000);
+        }
+    </script>
+</body>
+</html>
