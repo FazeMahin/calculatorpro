@@ -330,155 +330,752 @@
             font-weight: 600;
             color: var(--success);
         }
+
+        /* EMI Calculator Styles */
+        .emi-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .emi-result h4 {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .emi-result p {
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .emi-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .emi-breakdown .summary-item {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .emi-breakdown .summary-item h4 {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .emi-breakdown .summary-item p {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* SWP Recommendation Styles */
+        .recommendation-note {
+            background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%);
+            border: 1px solid #29b6f6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .recommendation-note p {
+            margin: 0;
+            color: #01579b;
+            font-size: 0.9rem;
+        }
+
+        .recommendation-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .recommendation-btn:hover {
+            background: var(--primary-light);
+        }
+
+        /* Tab Navigation Styles */
+        .calculator-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Advanced Calculator Styles */
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .calc-card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .calc-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .calc-result {
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .calc-result h4 {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .calc-result p {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .result-item {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .result-item h5 {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .result-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Portfolio Analytics Styles */
+        .portfolio-input {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background: var(--light);
+            border-radius: 0.5rem;
+        }
+
+        .portfolio-input input {
+            padding: 0.5rem;
+        }
+
+        .add-asset-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Cash Flow Input Styles */
+        .cashflow-input {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background: var(--light);
+            border-radius: 0.5rem;
+        }
+
+        .remove-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Chart Container for Advanced Calculations */
+        .advanced-chart {
+            height: 300px;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculator-tabs {
+                flex-direction: column;
+            }
+            
+            .portfolio-input {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .cashflow-input {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="app-container">
         <header>
             <h1>Investment Calculator Pro</h1>
-            <p class="subtitle">Calculate combined returns from SIP, Lumpsum & SWP investments</p>
+            <p class="subtitle">Comprehensive Investment Analysis & Financial Planning Tools</p>
+            
+            <!-- Navigation Tabs -->
+            <div class="calculator-tabs">
+                <button class="tab-btn active" onclick="showTab('investment')">Investment Planner</button>
+                <button class="tab-btn" onclick="showTab('advanced')">Advanced Calculations</button>
+                <button class="tab-btn" onclick="showTab('portfolio')">Portfolio Analytics</button>
+                <button class="tab-btn" onclick="showTab('risk')">Risk Analysis</button>
+            </div>
         </header>
 
         <main>
-            <div class="calculator-grid">
-                <!-- Investment Inputs Section -->
-                <section class="input-section">
-                    <div class="card">
-                        <h2>Investment Details</h2>
+            <!-- Investment Planner Tab -->
+            <div id="investment" class="tab-content active">
+                <div class="calculator-grid">
+                    <!-- Investment Inputs Section -->
+                    <section class="input-section">
+                        <div class="card">
+                            <h2>Investment Details</h2>
+                            <div class="input-group">
+                                <label for="annualRate">Annual Return Rate (%)</label>
+                                <input type="number" id="annualRate" value="12" min="1" max="100">
+                            </div>
+                            
+                            <!-- SIP Inputs -->
+                            <div class="investment-type">
+                                <h3>SIP Details</h3>
+                                <div class="input-group">
+                                    <label for="sipAmount">Monthly Investment (₹)</label>
+                                    <input type="number" id="sipAmount" placeholder="e.g., 10000">
+                                </div>
+                                <div class="date-inputs">
+                                    <div class="input-group">
+                                        <label for="sipStart">Start Date</label>
+                                        <input type="date" id="sipStart">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="sipEnd">End Date</label>
+                                        <input type="date" id="sipEnd">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Lumpsum Section -->
+                            <div class="investment-type">
+                                <h3>Lumpsum Investments</h3>
+                                <div id="lumpsumContainer">
+                                    <!-- Dynamic lumpsum entries will be added here -->
+                                </div>
+                                <button class="add-btn" onclick="addLumpsumEntry()">+ Add Lumpsum Investment</button>
+                            </div>
+
+                            <!-- EMI Calculator Section -->
+                            <div class="investment-type">
+                                <h3>EMI Calculator</h3>
+                                <div class="input-group">
+                                    <label for="emiPrincipal">Loan Amount (₹)</label>
+                                    <input type="number" id="emiPrincipal" placeholder="e.g., 1000000">
+                                </div>
+                                <div class="input-group">
+                                    <label for="emiRate">Annual Interest Rate (%)</label>
+                                    <input type="number" id="emiRate" placeholder="e.g., 8.5" step="0.1">
+                                </div>
+                                <div class="input-group">
+                                    <label for="emiTenure">Loan Tenure (Years)</label>
+                                    <input type="number" id="emiTenure" placeholder="e.g., 20">
+                                </div>
+                                <div class="emi-result">
+                                    <h4>Monthly EMI</h4>
+                                    <p id="monthlyEMI">₹0</p>
+                                </div>
+                                <div class="emi-breakdown">
+                                    <div class="summary-item">
+                                        <h4>Total Interest</h4>
+                                        <p id="totalInterest">₹0</p>
+                                    </div>
+                                    <div class="summary-item">
+                                        <h4>Total Payment</h4>
+                                        <p id="totalPayment">₹0</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SWP Section -->
+                            <div class="investment-type">
+                                <h3>SWP Details</h3>
+                                <div class="recommendation-note">
+                                    <p><strong>💡 Recommendation:</strong> International best practice suggests a 4% annual withdrawal rate for sustainable retirement income.</p>
+                                </div>
+                                <div class="input-group">
+                                    <label for="swpAmount">Monthly Withdrawal (₹)</label>
+                                    <input type="number" id="swpAmount" placeholder="e.g., 5000">
+                                </div>
+                                <div class="input-group">
+                                    <label for="swpCorpus">Total Corpus for SWP (₹)</label>
+                                    <input type="number" id="swpCorpus" placeholder="e.g., 1500000">
+                                    <button type="button" class="recommendation-btn" onclick="applySWPRecommendation()">Apply 4% Rule</button>
+                                </div>
+                                <div class="date-inputs">
+                                    <div class="input-group">
+                                        <label for="swpStart">Start Date</label>
+                                        <input type="date" id="swpStart">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="swpEnd">End Date</label>
+                                        <input type="date" id="swpEnd">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Post-Investment Withdrawal Plan -->
+                            <div class="investment-type">
+                                <h3>Post-Investment Withdrawal Plan</h3>
+                                <div class="input-group">
+                                    <label>Withdrawal Type</label>
+                                    <select id="postWithdrawalType" class="custom-select">
+                                        <option value="monthly">Monthly Withdrawal</option>
+                                        <option value="yearly">Yearly Withdrawal</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="postWithdrawalAmount">Withdrawal Amount (₹)</label>
+                                    <input type="number" id="postWithdrawalAmount" placeholder="e.g., 50000">
+                                </div>
+                                <div class="date-inputs">
+                                    <div class="input-group">
+                                        <label for="postWithdrawalStart">Start Date</label>
+                                        <input type="date" id="postWithdrawalStart">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="postWithdrawalEnd">End Date</label>
+                                        <input type="date" id="postWithdrawalEnd">
+                                    </div>
+                                </div>
+                                <div class="final-balance">
+                                    <h4>Projected Final Balance</h4>
+                                    <p id="finalBalance">₹0</p>
+                                </div>
+                            </div>
+
+                            <button class="calculate-btn" onclick="calculateInvestment()">Calculate Returns</button>
+                        </div>
+                    </section>
+
+                    <!-- Results Section -->
+                    <section class="results-section">
+                        <div class="card">
+                            <h2>Investment Summary</h2>
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <h4>Total Invested</h4>
+                                    <p id="totalInvested">₹0</p>
+                                </div>
+                                <div class="summary-item">
+                                    <h4>Expected Returns</h4>
+                                    <p id="totalReturns">₹0</p>
+                                </div>
+                                <div class="summary-item">
+                                    <h4>Total Withdrawals</h4>
+                                    <p id="totalWithdrawals">₹0</p>
+                                </div>
+                                <div class="summary-item">
+                                    <h4>Net Gain/Loss</h4>
+                                    <p id="netGainLoss">₹0</p>
+                                </div>
+                            </div>
+
+                            <div class="chart-container">
+                                <canvas id="investmentChart"></canvas>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Advanced Calculations Tab -->
+            <div id="advanced" class="tab-content">
+                <div class="calc-grid">
+                    <!-- CAGR Calculator -->
+                    <div class="calc-card">
+                        <h3>CAGR Calculator</h3>
                         <div class="input-group">
-                            <label for="annualRate">Annual Return Rate (%)</label>
-                            <input type="number" id="annualRate" value="12" min="1" max="100">
+                            <label for="cagrStartValue">Initial Value (₹)</label>
+                            <input type="number" id="cagrStartValue" placeholder="e.g., 100000">
                         </div>
-                        
-                        <!-- SIP Inputs -->
-                        <div class="investment-type">
-                            <h3>SIP Details</h3>
-                            <div class="input-group">
-                                <label for="sipAmount">Monthly Investment (₹)</label>
-                                <input type="number" id="sipAmount" placeholder="e.g., 10000">
-                            </div>
-                            <div class="date-inputs">
-                                <div class="input-group">
-                                    <label for="sipStart">Start Date</label>
-                                    <input type="date" id="sipStart">
-                                </div>
-                                <div class="input-group">
-                                    <label for="sipEnd">End Date</label>
-                                    <input type="date" id="sipEnd">
-                                </div>
-                            </div>
+                        <div class="input-group">
+                            <label for="cagrEndValue">Final Value (₹)</label>
+                            <input type="number" id="cagrEndValue" placeholder="e.g., 200000">
                         </div>
-
-                        <!-- Lumpsum Section -->
-                        <div class="investment-type">
-                            <h3>Lumpsum Investments</h3>
-                            <div id="lumpsumContainer">
-                                <!-- Dynamic lumpsum entries will be added here -->
-                            </div>
-                            <button class="add-btn" onclick="addLumpsumEntry()">+ Add Lumpsum Investment</button>
+                        <div class="input-group">
+                            <label for="cagrYears">Investment Period (Years)</label>
+                            <input type="number" id="cagrYears" placeholder="e.g., 5" step="0.1">
                         </div>
-
-                        <!-- SWP Section -->
-                        <div class="investment-type">
-                            <h3>SWP Details</h3>
-                            <div class="input-group">
-                                <label for="swpAmount">Monthly Withdrawal (₹)</label>
-                                <input type="number" id="swpAmount" placeholder="e.g., 5000">
-                            </div>
-                            <div class="date-inputs">
-                                <div class="input-group">
-                                    <label for="swpStart">Start Date</label>
-                                    <input type="date" id="swpStart">
-                                </div>
-                                <div class="input-group">
-                                    <label for="swpEnd">End Date</label>
-                                    <input type="date" id="swpEnd">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Post-Investment Withdrawal Plan -->
-                        <div class="investment-type">
-                            <h3>Post-Investment Withdrawal Plan</h3>
-                            <div class="input-group">
-                                <label>Withdrawal Type</label>
-                                <select id="postWithdrawalType" class="custom-select">
-                                    <option value="monthly">Monthly Withdrawal</option>
-                                    <option value="yearly">Yearly Withdrawal</option>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <label for="postWithdrawalAmount">Withdrawal Amount (₹)</label>
-                                <input type="number" id="postWithdrawalAmount" placeholder="e.g., 50000">
-                            </div>
-                            <div class="date-inputs">
-                                <div class="input-group">
-                                    <label for="postWithdrawalStart">Start Date</label>
-                                    <input type="date" id="postWithdrawalStart">
-                                </div>
-                                <div class="input-group">
-                                    <label for="postWithdrawalEnd">End Date</label>
-                                    <input type="date" id="postWithdrawalEnd">
-                                </div>
-                            </div>
-                            <div class="final-balance">
-                                <h4>Projected Final Balance</h4>
-                                <p id="finalBalance">₹0</p>
-                            </div>
-                        </div>
-
-                        <button class="calculate-btn" onclick="calculateInvestment()">Calculate Returns</button>
-                    </div>
-                </section>
-
-                <!-- Results Section -->
-                <section class="results-section">
-                    <div class="card">
-                        <h2>Investment Summary</h2>
-                        <div class="summary-grid">
-                            <div class="summary-item">
-                                <h4>Total Invested</h4>
-                                <p id="totalInvested">₹0</p>
-                            </div>
-                            <div class="summary-item">
-                                <h4>Expected Returns</h4>
-                                <p id="totalReturns">₹0</p>
-                            </div>
-                            <div class="summary-item">
-                                <h4>Total Withdrawals</h4>
-                                <p id="totalWithdrawals">₹0</p>
-                            </div>
-                            <div class="summary-item">
-                                <h4>Net Gain/Loss</h4>
-                                <p id="netGainLoss">₹0</p>
-                            </div>
-                        </div>
-
-                        <div class="investment-breakdown">
-                            <h3>Investment Breakdown</h3>
-                            <div class="breakdown-chart">
-                                <canvas id="breakdownChart"></canvas>
-                            </div>
-                            <div class="breakdown-legend">
-                                <div class="legend-item">
-                                    <span class="color-dot sip"></span>
-                                    <span>SIP Investments</span>
-                                </div>
-                                <div class="legend-item">
-                                    <span class="color-dot lumpsum"></span>
-                                    <span>Lumpsum Investments</span>
-                                </div>
-                                <div class="legend-item">
-                                    <span class="color-dot returns"></span>
-                                    <span>Returns</span>
-                                </div>
-                            </div>
-
-                        <div class="chart-container">
-                            <canvas id="investmentChart"></canvas>
+                        <button class="calculate-btn" onclick="calculateCAGR()">Calculate CAGR</button>
+                        <div class="calc-result">
+                            <h4>CAGR</h4>
+                            <p id="cagrResult">0%</p>
                         </div>
                     </div>
-                </section>
+
+                    <!-- Present Value Calculator -->
+                    <div class="calc-card">
+                        <h3>Present Value Calculator</h3>
+                        <div class="input-group">
+                            <label for="pvFutureValue">Future Value (₹)</label>
+                            <input type="number" id="pvFutureValue" placeholder="e.g., 200000">
+                        </div>
+                        <div class="input-group">
+                            <label for="pvRate">Annual Rate (%)</label>
+                            <input type="number" id="pvRate" placeholder="e.g., 8" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="pvYears">Years</label>
+                            <input type="number" id="pvYears" placeholder="e.g., 10">
+                        </div>
+                        <button class="calculate-btn" onclick="calculatePV()">Calculate Present Value</button>
+                        <div class="calc-result">
+                            <h4>Present Value</h4>
+                            <p id="pvResult">₹0</p>
+                        </div>
+                    </div>
+
+                    <!-- ROI Calculator -->
+                    <div class="calc-card">
+                        <h3>ROI Calculator</h3>
+                        <div class="input-group">
+                            <label for="roiCost">Initial Investment (₹)</label>
+                            <input type="number" id="roiCost" placeholder="e.g., 100000">
+                        </div>
+                        <div class="input-group">
+                            <label for="roiGain">Current Value (₹)</label>
+                            <input type="number" id="roiGain" placeholder="e.g., 150000">
+                        </div>
+                        <button class="calculate-btn" onclick="calculateROI()">Calculate ROI</button>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <h5>ROI Percentage</h5>
+                                <p id="roiPercentage">0%</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>Absolute Gain</h5>
+                                <p id="roiAbsolute">₹0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IRR/XIRR Calculator -->
+                    <div class="calc-card">
+                        <h3>IRR/XIRR Calculator</h3>
+                        <div id="cashFlowContainer">
+                            <div class="cashflow-input">
+                                <input type="date" placeholder="Date" class="cashflow-date">
+                                <input type="number" placeholder="Amount (₹)" class="cashflow-amount">
+                                <button type="button" class="remove-btn" onclick="removeCashFlow(this)">×</button>
+                            </div>
+                        </div>
+                        <button class="add-asset-btn" onclick="addCashFlow()">+ Add Cash Flow</button>
+                        <button class="calculate-btn" onclick="calculateIRR()">Calculate IRR</button>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <h5>IRR</h5>
+                                <p id="irrResult">0%</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>Total Investment</h5>
+                                <p id="irrInvestment">₹0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NPV Calculator -->
+                    <div class="calc-card">
+                        <h3>NPV Calculator</h3>
+                        <div class="input-group">
+                            <label for="npvRate">Discount Rate (%)</label>
+                            <input type="number" id="npvRate" placeholder="e.g., 10" step="0.1">
+                        </div>
+                        <div id="npvCashFlowContainer">
+                            <div class="input-group">
+                                <label>Cash Flows (₹)</label>
+                                <input type="number" class="npv-cashflow" placeholder="Year 0 (Initial Investment)">
+                                <input type="number" class="npv-cashflow" placeholder="Year 1">
+                                <input type="number" class="npv-cashflow" placeholder="Year 2">
+                                <input type="number" class="npv-cashflow" placeholder="Year 3">
+                            </div>
+                        </div>
+                        <button class="add-asset-btn" onclick="addNPVYear()">+ Add Year</button>
+                        <button class="calculate-btn" onclick="calculateNPV()">Calculate NPV</button>
+                        <div class="calc-result">
+                            <h4>Net Present Value</h4>
+                            <p id="npvResult">₹0</p>
+                        </div>
+                    </div>
+
+                    <!-- Inflation Adjusted Returns -->
+                    <div class="calc-card">
+                        <h3>Inflation Adjusted Returns</h3>
+                        <div class="input-group">
+                            <label for="inflationNominal">Nominal Return (%)</label>
+                            <input type="number" id="inflationNominal" placeholder="e.g., 12" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="inflationRate">Inflation Rate (%)</label>
+                            <input type="number" id="inflationRate" placeholder="e.g., 6" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="taxRate">Tax Rate (%)</label>
+                            <input type="number" id="taxRate" placeholder="e.g., 20" step="0.1">
+                        </div>
+                        <button class="calculate-btn" onclick="calculateInflationAdjusted()">Calculate Real Returns</button>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <h5>Real Return</h5>
+                                <p id="realReturn">0%</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>After-Tax Return</h5>
+                                <p id="afterTaxReturn">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Analytics Tab -->
+            <div id="portfolio" class="tab-content">
+                <div class="calc-grid">
+                    <!-- Portfolio Optimizer -->
+                    <div class="calc-card">
+                        <h3>Portfolio Analytics</h3>
+                        <div id="portfolioContainer">
+                            <div class="portfolio-input">
+                                <input type="text" placeholder="Asset Name" class="asset-name">
+                                <input type="number" placeholder="Weight %" class="asset-weight">
+                                <input type="number" placeholder="Expected Return %" class="asset-return">
+                                <input type="number" placeholder="Risk (Std Dev) %" class="asset-risk">
+                            </div>
+                        </div>
+                        <button class="add-asset-btn" onclick="addAsset()">+ Add Asset</button>
+                        <button class="calculate-btn" onclick="calculatePortfolio()">Analyze Portfolio</button>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <h5>Portfolio Return</h5>
+                                <p id="portfolioReturn">0%</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>Portfolio Risk</h5>
+                                <p id="portfolioRisk">0%</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>Sharpe Ratio</h5>
+                                <p id="sharpeRatio">0</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>Risk-Return Ratio</h5>
+                                <p id="riskReturnRatio">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bond Calculator -->
+                    <div class="calc-card">
+                        <h3>Bond Calculator</h3>
+                        <div class="input-group">
+                            <label for="bondFaceValue">Face Value (₹)</label>
+                            <input type="number" id="bondFaceValue" placeholder="e.g., 1000">
+                        </div>
+                        <div class="input-group">
+                            <label for="bondCouponRate">Coupon Rate (%)</label>
+                            <input type="number" id="bondCouponRate" placeholder="e.g., 8" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="bondYield">Market Yield (%)</label>
+                            <input type="number" id="bondYield" placeholder="e.g., 7.5" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="bondMaturity">Years to Maturity</label>
+                            <input type="number" id="bondMaturity" placeholder="e.g., 10">
+                        </div>
+                        <button class="calculate-btn" onclick="calculateBond()">Calculate Bond Metrics</button>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <h5>Current Price</h5>
+                                <p id="bondPrice">₹0</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>Duration</h5>
+                                <p id="bondDuration">0 years</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>YTM</h5>
+                                <p id="bondYTM">0%</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>Annual Coupon</h5>
+                                <p id="bondCoupon">₹0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Analysis Tab -->
+            <div id="risk" class="tab-content">
+                <div class="calc-grid">
+                    <!-- Monte Carlo Simulation -->
+                    <div class="calc-card">
+                        <h3>Monte Carlo Simulation</h3>
+                        <div class="input-group">
+                            <label for="mcInitial">Initial Investment (₹)</label>
+                            <input type="number" id="mcInitial" placeholder="e.g., 100000">
+                        </div>
+                        <div class="input-group">
+                            <label for="mcReturn">Expected Annual Return (%)</label>
+                            <input type="number" id="mcReturn" placeholder="e.g., 12" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="mcVolatility">Volatility/Standard Deviation (%)</label>
+                            <input type="number" id="mcVolatility" placeholder="e.g., 15" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="mcYears">Investment Period (Years)</label>
+                            <input type="number" id="mcYears" placeholder="e.g., 10">
+                        </div>
+                        <button class="calculate-btn" onclick="runMonteCarloSimulation()">Run Simulation</button>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <h5>Best Case (95%)</h5>
+                                <p id="mc95">₹0</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>Expected (50%)</h5>
+                                <p id="mc50">₹0</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>Worst Case (5%)</h5>
+                                <p id="mc5">₹0</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>Probability of Loss</h5>
+                                <p id="mcLossProbability">0%</p>
+                            </div>
+                        </div>
+                        <div class="advanced-chart">
+                            <canvas id="monteCarloChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- VaR Calculator -->
+                    <div class="calc-card">
+                        <h3>Value at Risk (VaR)</h3>
+                        <div class="input-group">
+                            <label for="varPortfolioValue">Portfolio Value (₹)</label>
+                            <input type="number" id="varPortfolioValue" placeholder="e.g., 1000000">
+                        </div>
+                        <div class="input-group">
+                            <label for="varVolatility">Annual Volatility (%)</label>
+                            <input type="number" id="varVolatility" placeholder="e.g., 20" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="varConfidence">Confidence Level (%)</label>
+                            <select id="varConfidence" class="custom-select">
+                                <option value="95">95%</option>
+                                <option value="99">99%</option>
+                                <option value="99.9">99.9%</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="varTimeHorizon">Time Horizon (Days)</label>
+                            <input type="number" id="varTimeHorizon" value="1" placeholder="e.g., 1">
+                        </div>
+                        <button class="calculate-btn" onclick="calculateVaR()">Calculate VaR</button>
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <h5>Daily VaR</h5>
+                                <p id="varDaily">₹0</p>
+                            </div>
+                            <div class="result-item">
+                                <h5>VaR Percentage</h5>
+                                <p id="varPercentage">0%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
@@ -773,9 +1370,52 @@
         document.addEventListener('DOMContentLoaded', function() {
             const inputs = document.querySelectorAll('input');
             inputs.forEach(input => {
-                input.addEventListener('change', calculateInvestment);
+                input.addEventListener('change', function() {
+                    calculateInvestment();
+                    calculateEMI();
+                });
             });
         });
+
+        // EMI Calculator Functions
+        function calculateEMI() {
+            const principal = parseFloat(document.getElementById('emiPrincipal').value) || 0;
+            const annualRate = parseFloat(document.getElementById('emiRate').value) || 0;
+            const tenure = parseFloat(document.getElementById('emiTenure').value) || 0;
+
+            if (principal > 0 && annualRate > 0 && tenure > 0) {
+                const monthlyRate = annualRate / 12 / 100;
+                const numberOfPayments = tenure * 12;
+                
+                // EMI formula: P * r * (1 + r)^n / ((1 + r)^n - 1)
+                const emi = principal * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments) / 
+                           (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+                
+                const totalPayment = emi * numberOfPayments;
+                const totalInterest = totalPayment - principal;
+
+                document.getElementById('monthlyEMI').textContent = '₹' + Math.round(emi).toLocaleString('en-IN');
+                document.getElementById('totalInterest').textContent = '₹' + Math.round(totalInterest).toLocaleString('en-IN');
+                document.getElementById('totalPayment').textContent = '₹' + Math.round(totalPayment).toLocaleString('en-IN');
+            } else {
+                document.getElementById('monthlyEMI').textContent = '₹0';
+                document.getElementById('totalInterest').textContent = '₹0';
+                document.getElementById('totalPayment').textContent = '₹0';
+            }
+        }
+
+        // SWP 4% Rule Recommendation
+        function applySWPRecommendation() {
+            const corpus = parseFloat(document.getElementById('swpCorpus').value) || 0;
+            if (corpus > 0) {
+                // 4% annual withdrawal = 4% / 12 months
+                const monthlyWithdrawal = (corpus * 0.04) / 12;
+                document.getElementById('swpAmount').value = Math.round(monthlyWithdrawal);
+                calculateInvestment();
+            } else {
+                alert('Please enter the total corpus amount first.');
+            }
+        }
 
         // Update calculateInvestment function
         function calculateInvestment() {
@@ -881,6 +1521,411 @@
             document.querySelector('.input-section .card').prepend(errorDiv);
             setTimeout(() => errorDiv.remove(), 5000);
         }
+
+        // Tab Navigation Functions
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Advanced Calculator Functions
+        function calculateCAGR() {
+            const startValue = parseFloat(document.getElementById('cagrStartValue').value) || 0;
+            const endValue = parseFloat(document.getElementById('cagrEndValue').value) || 0;
+            const years = parseFloat(document.getElementById('cagrYears').value) || 0;
+
+            if (startValue > 0 && endValue > 0 && years > 0) {
+                const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
+                document.getElementById('cagrResult').textContent = cagr.toFixed(2) + '%';
+            } else {
+                document.getElementById('cagrResult').textContent = '0%';
+            }
+        }
+
+        function calculatePV() {
+            const futureValue = parseFloat(document.getElementById('pvFutureValue').value) || 0;
+            const rate = parseFloat(document.getElementById('pvRate').value) || 0;
+            const years = parseFloat(document.getElementById('pvYears').value) || 0;
+
+            if (futureValue > 0 && rate > 0 && years > 0) {
+                const presentValue = futureValue / Math.pow(1 + rate / 100, years);
+                document.getElementById('pvResult').textContent = '₹' + Math.round(presentValue).toLocaleString('en-IN');
+            } else {
+                document.getElementById('pvResult').textContent = '₹0';
+            }
+        }
+
+        function calculateROI() {
+            const cost = parseFloat(document.getElementById('roiCost').value) || 0;
+            const gain = parseFloat(document.getElementById('roiGain').value) || 0;
+
+            if (cost > 0 && gain > 0) {
+                const roi = ((gain - cost) / cost) * 100;
+                const absoluteGain = gain - cost;
+                
+                document.getElementById('roiPercentage').textContent = roi.toFixed(2) + '%';
+                document.getElementById('roiAbsolute').textContent = '₹' + Math.round(absoluteGain).toLocaleString('en-IN');
+            } else {
+                document.getElementById('roiPercentage').textContent = '0%';
+                document.getElementById('roiAbsolute').textContent = '₹0';
+            }
+        }
+
+        function addCashFlow() {
+            const container = document.getElementById('cashFlowContainer');
+            const div = document.createElement('div');
+            div.className = 'cashflow-input';
+            div.innerHTML = `
+                <input type="date" placeholder="Date" class="cashflow-date">
+                <input type="number" placeholder="Amount (₹)" class="cashflow-amount">
+                <button type="button" class="remove-btn" onclick="removeCashFlow(this)">×</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function removeCashFlow(button) {
+            button.parentElement.remove();
+        }
+
+        function calculateIRR() {
+            const cashFlows = [];
+            const amounts = document.querySelectorAll('.cashflow-amount');
+            let totalInvestment = 0;
+
+            amounts.forEach(input => {
+                const amount = parseFloat(input.value) || 0;
+                if (amount !== 0) {
+                    cashFlows.push(amount);
+                    if (amount < 0) totalInvestment += Math.abs(amount);
+                }
+            });
+
+            if (cashFlows.length >= 2) {
+                // Simplified IRR calculation using Newton-Raphson method
+                const irr = calculateIRRValue(cashFlows);
+                document.getElementById('irrResult').textContent = (irr * 100).toFixed(2) + '%';
+                document.getElementById('irrInvestment').textContent = '₹' + totalInvestment.toLocaleString('en-IN');
+            } else {
+                document.getElementById('irrResult').textContent = '0%';
+                document.getElementById('irrInvestment').textContent = '₹0';
+            }
+        }
+
+        function calculateIRRValue(cashFlows) {
+            // Simplified IRR calculation
+            let rate = 0.1; // Initial guess
+            const maxIterations = 100;
+            const tolerance = 0.0001;
+
+            for (let i = 0; i < maxIterations; i++) {
+                let npv = 0;
+                let dnpv = 0;
+
+                for (let j = 0; j < cashFlows.length; j++) {
+                    npv += cashFlows[j] / Math.pow(1 + rate, j);
+                    dnpv -= j * cashFlows[j] / Math.pow(1 + rate, j + 1);
+                }
+
+                const newRate = rate - npv / dnpv;
+                if (Math.abs(newRate - rate) < tolerance) {
+                    return newRate;
+                }
+                rate = newRate;
+            }
+            return rate;
+        }
+
+        function addNPVYear() {
+            const container = document.getElementById('npvCashFlowContainer').querySelector('.input-group');
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.className = 'npv-cashflow';
+            input.placeholder = `Year ${container.children.length}`;
+            container.appendChild(input);
+        }
+
+        function calculateNPV() {
+            const rate = parseFloat(document.getElementById('npvRate').value) || 0;
+            const cashFlows = Array.from(document.querySelectorAll('.npv-cashflow')).map(input => parseFloat(input.value) || 0);
+
+            if (rate > 0 && cashFlows.some(cf => cf !== 0)) {
+                let npv = 0;
+                cashFlows.forEach((cashFlow, index) => {
+                    npv += cashFlow / Math.pow(1 + rate / 100, index);
+                });
+
+                document.getElementById('npvResult').textContent = '₹' + Math.round(npv).toLocaleString('en-IN');
+            } else {
+                document.getElementById('npvResult').textContent = '₹0';
+            }
+        }
+
+        function calculateInflationAdjusted() {
+            const nominal = parseFloat(document.getElementById('inflationNominal').value) || 0;
+            const inflation = parseFloat(document.getElementById('inflationRate').value) || 0;
+            const tax = parseFloat(document.getElementById('taxRate').value) || 0;
+
+            if (nominal > 0 && inflation >= 0) {
+                const realReturn = ((1 + nominal / 100) / (1 + inflation / 100) - 1) * 100;
+                const afterTaxReturn = nominal * (1 - tax / 100);
+
+                document.getElementById('realReturn').textContent = realReturn.toFixed(2) + '%';
+                document.getElementById('afterTaxReturn').textContent = afterTaxReturn.toFixed(2) + '%';
+            } else {
+                document.getElementById('realReturn').textContent = '0%';
+                document.getElementById('afterTaxReturn').textContent = '0%';
+            }
+        }
+
+        // Portfolio Analytics Functions
+        function addAsset() {
+            const container = document.getElementById('portfolioContainer');
+            const div = document.createElement('div');
+            div.className = 'portfolio-input';
+            div.innerHTML = `
+                <input type="text" placeholder="Asset Name" class="asset-name">
+                <input type="number" placeholder="Weight %" class="asset-weight">
+                <input type="number" placeholder="Expected Return %" class="asset-return">
+                <input type="number" placeholder="Risk (Std Dev) %" class="asset-risk">
+            `;
+            container.appendChild(div);
+        }
+
+        function calculatePortfolio() {
+            const assets = Array.from(document.querySelectorAll('.portfolio-input')).map(row => ({
+                weight: parseFloat(row.querySelector('.asset-weight').value) || 0,
+                return: parseFloat(row.querySelector('.asset-return').value) || 0,
+                risk: parseFloat(row.querySelector('.asset-risk').value) || 0
+            })).filter(asset => asset.weight > 0);
+
+            if (assets.length > 0) {
+                const totalWeight = assets.reduce((sum, asset) => sum + asset.weight, 0);
+                
+                // Portfolio expected return
+                const portfolioReturn = assets.reduce((sum, asset) => sum + (asset.weight / totalWeight) * asset.return, 0);
+                
+                // Portfolio risk (simplified calculation)
+                const portfolioRisk = Math.sqrt(assets.reduce((sum, asset) => sum + Math.pow((asset.weight / totalWeight) * asset.risk, 2), 0));
+                
+                // Sharpe ratio (assuming risk-free rate of 6%)
+                const riskFreeRate = 6;
+                const sharpeRatio = (portfolioReturn - riskFreeRate) / portfolioRisk;
+                
+                const riskReturnRatio = portfolioReturn / portfolioRisk;
+
+                document.getElementById('portfolioReturn').textContent = portfolioReturn.toFixed(2) + '%';
+                document.getElementById('portfolioRisk').textContent = portfolioRisk.toFixed(2) + '%';
+                document.getElementById('sharpeRatio').textContent = sharpeRatio.toFixed(2);
+                document.getElementById('riskReturnRatio').textContent = riskReturnRatio.toFixed(2);
+            }
+        }
+
+        // Bond Calculator Functions
+        function calculateBond() {
+            const faceValue = parseFloat(document.getElementById('bondFaceValue').value) || 0;
+            const couponRate = parseFloat(document.getElementById('bondCouponRate').value) || 0;
+            const marketYield = parseFloat(document.getElementById('bondYield').value) || 0;
+            const maturity = parseFloat(document.getElementById('bondMaturity').value) || 0;
+
+            if (faceValue > 0 && couponRate >= 0 && marketYield > 0 && maturity > 0) {
+                const annualCoupon = (faceValue * couponRate) / 100;
+                
+                // Bond price calculation
+                let bondPrice = 0;
+                for (let i = 1; i <= maturity; i++) {
+                    bondPrice += annualCoupon / Math.pow(1 + marketYield / 100, i);
+                }
+                bondPrice += faceValue / Math.pow(1 + marketYield / 100, maturity);
+                
+                // Duration calculation (simplified Macaulay duration)
+                let duration = 0;
+                let totalPV = 0;
+                for (let i = 1; i <= maturity; i++) {
+                    const pv = annualCoupon / Math.pow(1 + marketYield / 100, i);
+                    duration += i * pv;
+                    totalPV += pv;
+                }
+                const finalPV = faceValue / Math.pow(1 + marketYield / 100, maturity);
+                duration += maturity * finalPV;
+                totalPV += finalPV;
+                duration = duration / totalPV;
+
+                document.getElementById('bondPrice').textContent = '₹' + Math.round(bondPrice).toLocaleString('en-IN');
+                document.getElementById('bondDuration').textContent = duration.toFixed(2) + ' years';
+                document.getElementById('bondYTM').textContent = marketYield.toFixed(2) + '%';
+                document.getElementById('bondCoupon').textContent = '₹' + Math.round(annualCoupon).toLocaleString('en-IN');
+            }
+        }
+
+        // Risk Analysis Functions
+        function runMonteCarloSimulation() {
+            const initial = parseFloat(document.getElementById('mcInitial').value) || 0;
+            const expectedReturn = parseFloat(document.getElementById('mcReturn').value) || 0;
+            const volatility = parseFloat(document.getElementById('mcVolatility').value) || 0;
+            const years = parseFloat(document.getElementById('mcYears').value) || 0;
+
+            if (initial > 0 && expectedReturn > 0 && volatility > 0 && years > 0) {
+                const numSimulations = 1000;
+                const results = [];
+
+                for (let i = 0; i < numSimulations; i++) {
+                    let value = initial;
+                    for (let year = 0; year < years; year++) {
+                        const randomReturn = normalRandom() * (volatility / 100) + (expectedReturn / 100);
+                        value *= (1 + randomReturn);
+                    }
+                    results.push(value);
+                }
+
+                results.sort((a, b) => a - b);
+                
+                const percentile5 = results[Math.floor(numSimulations * 0.05)];
+                const percentile50 = results[Math.floor(numSimulations * 0.5)];
+                const percentile95 = results[Math.floor(numSimulations * 0.95)];
+                const lossCount = results.filter(r => r < initial).length;
+                const lossProbability = (lossCount / numSimulations) * 100;
+
+                document.getElementById('mc5').textContent = '₹' + Math.round(percentile5).toLocaleString('en-IN');
+                document.getElementById('mc50').textContent = '₹' + Math.round(percentile50).toLocaleString('en-IN');
+                document.getElementById('mc95').textContent = '₹' + Math.round(percentile95).toLocaleString('en-IN');
+                document.getElementById('mcLossProbability').textContent = lossProbability.toFixed(1) + '%';
+
+                // Create Monte Carlo chart
+                createMonteCarloChart(results, initial);
+            }
+        }
+
+        function normalRandom() {
+            let u = 0, v = 0;
+            while(u === 0) u = Math.random();
+            while(v === 0) v = Math.random();
+            return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+        }
+
+        function createMonteCarloChart(results, initial) {
+            const ctx = document.getElementById('monteCarloChart').getContext('2d');
+            
+            // Create histogram data
+            const bins = 20;
+            const min = Math.min(...results);
+            const max = Math.max(...results);
+            const binSize = (max - min) / bins;
+            const histogram = new Array(bins).fill(0);
+            
+            results.forEach(value => {
+                const binIndex = Math.min(Math.floor((value - min) / binSize), bins - 1);
+                histogram[binIndex]++;
+            });
+
+            const labels = histogram.map((_, i) => {
+                const binStart = min + i * binSize;
+                return '₹' + Math.round(binStart / 1000) + 'K';
+            });
+
+            if (window.monteCarloChart) {
+                window.monteCarloChart.destroy();
+            }
+
+            window.monteCarloChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Frequency',
+                        data: histogram,
+                        backgroundColor: 'rgba(37, 99, 235, 0.7)',
+                        borderColor: 'rgba(37, 99, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Frequency'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Portfolio Value'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function calculateVaR() {
+            const portfolioValue = parseFloat(document.getElementById('varPortfolioValue').value) || 0;
+            const volatility = parseFloat(document.getElementById('varVolatility').value) || 0;
+            const confidence = parseFloat(document.getElementById('varConfidence').value) || 95;
+            const timeHorizon = parseFloat(document.getElementById('varTimeHorizon').value) || 1;
+
+            if (portfolioValue > 0 && volatility > 0) {
+                // Z-scores for different confidence levels
+                const zScores = {
+                    95: 1.645,
+                    99: 2.326,
+                    99.9: 3.090
+                };
+
+                const dailyVolatility = volatility / Math.sqrt(252); // Convert annual to daily
+                const adjustedVolatility = dailyVolatility * Math.sqrt(timeHorizon);
+                const zScore = zScores[confidence] || 1.645;
+                
+                const varAmount = portfolioValue * adjustedVolatility * zScore / 100;
+                const varPercentage = (varAmount / portfolioValue) * 100;
+
+                document.getElementById('varDaily').textContent = '₹' + Math.round(varAmount).toLocaleString('en-IN');
+                document.getElementById('varPercentage').textContent = varPercentage.toFixed(2) + '%';
+            } else {
+                document.getElementById('varDaily').textContent = '₹0';
+                document.getElementById('varPercentage').textContent = '0%';
+            }
+        }
+
+        // Initialize advanced calculators on input change
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners for advanced calculator inputs
+            const advancedInputs = document.querySelectorAll('#advanced input, #portfolio input, #risk input');
+            advancedInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    // Auto-calculate for certain calculators
+                    if (input.closest('.calc-card')?.querySelector('h3')?.textContent === 'CAGR Calculator') {
+                        calculateCAGR();
+                    } else if (input.closest('.calc-card')?.querySelector('h3')?.textContent === 'Present Value Calculator') {
+                        calculatePV();
+                    } else if (input.closest('.calc-card')?.querySelector('h3')?.textContent === 'ROI Calculator') {
+                        calculateROI();
+                    } else if (input.closest('.calc-card')?.querySelector('h3')?.textContent === 'Inflation Adjusted Returns') {
+                        calculateInflationAdjusted();
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
